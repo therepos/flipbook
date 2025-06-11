@@ -10,8 +10,13 @@
   <script src="js/turn.min.js"></script>
 
   <script>
-    console.log("jQuery version:", $.fn.jquery);
-    console.log("Turn.js loaded:", typeof $.fn.turn);
+    $(document).ready(function () {
+      $('#flipbook').turn({
+        width: 800,
+        height: 500,
+        autoCenter: true
+      });
+    });
   </script>
 
   <style>
