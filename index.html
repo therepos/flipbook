@@ -9,6 +9,22 @@
   <script src="js/jquery-3.7.1.min.js"></script>
   <script src="js/turn.js"></script>
 
+  <script type="text/javascript">
+    const flipbook = $('#flipbook');
+
+    flipbook.turn({
+      width: 800,
+      height: 500,
+      autoCenter: true
+    });
+
+    // Enable arrow key navigation
+    $(document).keydown(function (e) {
+      if (e.key === 'ArrowRight') flipbook.turn('next');
+      if (e.key === 'ArrowLeft') flipbook.turn('previous');
+    });
+  </script>
+
   <style>
     body {
       margin: 0;
@@ -22,11 +38,15 @@
     #flipbook {
       width: 800px;
       height: 500px;
+      cursor: grab;
     }
 
     #flipbook .page {
       width: 400px;
       height: 500px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
     }
 
     #flipbook img {
