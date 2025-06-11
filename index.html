@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Flipbook Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- jQuery from CDN -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/jquery-3.7.1.min.js"></script>
 
   <!-- Turn.js (use turn.min.js from your js folder) -->
   <script src="js/turn.min.js"></script>
 
   <style>
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       background: #111;
@@ -42,6 +44,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div id="flipbook">
@@ -144,8 +147,10 @@
   </div>
 
   <script>
-    $('#flipbook').turn({
-      autoCenter: true
+    $(function () {
+      $('#flipbook').turn({
+        autoCenter: true
+      });
     });
 
     $(window).on('resize', function () {
@@ -154,4 +159,5 @@
   </script>
 
 </body>
+
 </html>
