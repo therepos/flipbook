@@ -6,10 +6,7 @@
   <title>Flipbook Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- jQuery from CDN -->
   <script src="js/jquery-3.7.1.min.js"></script>
-
-  <!-- Turn.js (use turn.min.js from your js folder) -->
   <script src="js/turn.min.js"></script>
 
   <style>
@@ -147,7 +144,7 @@
   </div>
 
   <script>
-    $(function () {
+    $(document).ready(function () {
       $('#flipbook').turn({
         autoCenter: true
       });
