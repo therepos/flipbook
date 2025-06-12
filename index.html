@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Slide Flipbook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <script src="js/jquery-3.7.1.min.js"></script>
   <script src="js/turn.js"></script>
 
   <style>
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       width: 100vw;
@@ -35,6 +37,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div id="flipbook">
@@ -70,8 +73,14 @@
         $('#flipbook').turn('next');
       });
 
+      $(document).on('contextmenu', function (e) {
+        e.preventDefault();
+        $('#flipbook').turn('previous');
+      });
+
     });
   </script>
 
 </body>
+
 </html>
