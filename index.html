@@ -209,18 +209,17 @@
       display: 'single'
     });
 
-    // Resize on window change
     $(window).on('resize', function () {
       flipbook.turn('size', window.innerWidth, window.innerHeight);
     });
 
-    // Keyboard navigation
+    // Arrow key navigation
     $(document).keydown(function (e) {
       if (e.key === 'ArrowRight') flipbook.turn('next');
       if (e.key === 'ArrowLeft') flipbook.turn('previous');
     });
 
-    // Mouse click navigation (left-click = next, right-click = previous)
+    // Mouse click navigation
     $(document).on('click', function () {
       flipbook.turn('next');
     });
@@ -230,15 +229,15 @@
       flipbook.turn('previous');
     });
 
-    // Touch swipe support (mobile)
+    // Mobile tap zone navigation
     $(document).on('touchstart', function (e) {
       const x = e.originalEvent.touches[0].clientX;
       const screenWidth = window.innerWidth;
 
       if (x > screenWidth * 0.66) {
-        $('#flipbook').turn('next');
+        flipbook.turn('next');
       } else if (x < screenWidth * 0.33) {
-        $('#flipbook').turn('previous');
+        flipbook.turn('previous');
       }
     });
 
@@ -260,26 +259,21 @@
 
     flipbook.bind('turned', updateCounter);
     flipbook.bind('start', updateCounter);
-
-    // Initialize counter once DOM is ready
     $(document).ready(updateCounter);
 
+    // UI fade in/out on interaction
     let fadeTimer;
-
     function showUI() {
       document.body.classList.add('user-active');
       clearTimeout(fadeTimer);
       fadeTimer = setTimeout(() => {
         document.body.classList.remove('user-active');
-      }, 2000); // visible for 2 seconds
+      }, 2000);
     }
 
-    // Trigger on mouse move or touch
     document.addEventListener('mousemove', showUI);
     document.addEventListener('touchstart', showUI);
-
-    // Initial state
-    showUI();
+    showUI(); // initial trigger
   </script>
 
 </body>
