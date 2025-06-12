@@ -234,6 +234,8 @@
       const x = e.originalEvent.touches[0].clientX;
       const screenWidth = window.innerWidth;
 
+      e.stopImmediatePropagation(); // ← prevents Turn.js from also flipping
+
       if (x > screenWidth * 0.66) {
         flipbook.turn('next');
       } else if (x < screenWidth * 0.33) {
