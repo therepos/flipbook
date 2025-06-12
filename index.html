@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <title>Flipbook Test</title>
+  <title>Slide Flipbook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
   <script src="js/jquery-3.7.1.min.js"></script>
   <script src="js/turn.js"></script>
 
   <style>
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background: #111;
       width: 100vw;
       height: 100vh;
+      background: #000;
       overflow: hidden;
     }
 
     #flipbook {
-      width: 90vw;
-      height: 90vh;
-      margin: auto;
+      width: 100vw;
+      height: 100vh;
     }
 
     #flipbook .page {
-      width: 45vw;
-      height: 90vh;
+      width: 100vw;
+      height: 100vh;
     }
 
     #flipbook img {
@@ -38,7 +35,6 @@
     }
   </style>
 </head>
-
 <body>
 
   <div id="flipbook">
@@ -46,28 +42,30 @@
     <div class="page"><img src="images/slide02.png" alt="Slide 2"></div>
     <div class="page"><img src="images/slide03.png" alt="Slide 3"></div>
     <div class="page"><img src="images/slide04.png" alt="Slide 4"></div>
+    <!-- Add more slides as needed -->
   </div>
 
   <script>
-    const flipbook = $('#flipbook');
+    $(document).ready(function () {
+      const flipbook = $('#flipbook');
 
-    flipbook.turn({
-      width: $('#flipbook').width(),
-      height: $('#flipbook').height(),
-      autoCenter: true
-    });
+      flipbook.turn({
+        width: window.innerWidth,
+        height: window.innerHeight,
+        autoCenter: true,
+        display: 'single'
+      });
 
-    $(window).on('resize', function () {
-      flipbook.turn('size', $('#flipbook').width(), $('#flipbook').height());
-    });
+      $(window).on('resize', function () {
+        flipbook.turn('size', window.innerWidth, window.innerHeight);
+      });
 
-    // Enable left/right keyboard navigation
-    $(document).keydown(function (e) {
-      if (e.key === 'ArrowRight') flipbook.turn('next');
-      if (e.key === 'ArrowLeft') flipbook.turn('previous');
+      $(document).keydown(function (e) {
+        if (e.key === 'ArrowRight') flipbook.turn('next');
+        if (e.key === 'ArrowLeft') flipbook.turn('previous');
+      });
     });
   </script>
 
 </body>
-
 </html>
