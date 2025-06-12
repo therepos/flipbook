@@ -64,6 +64,12 @@
         if (e.key === 'ArrowRight') flipbook.turn('next');
         if (e.key === 'ArrowLeft') flipbook.turn('previous');
       });
+
+      // Advance on mouse click (like PPT)
+      $(document).on('click', function () {
+        $('#flipbook').turn('next');
+      });
+
     });
   </script>
 
