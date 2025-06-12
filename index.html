@@ -235,15 +235,14 @@
       startX = e.originalEvent.touches[0].clientX;
     });
 
-    $(document).on('touchend', function (e) {
-      const endX = e.originalEvent.changedTouches[0].clientX;
-      const diff = startX - endX;
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) {
-          flipbook.turn('next'); // swipe left
-        } else {
-          flipbook.turn('previous'); // swipe right
-        }
+    $(document).on('touchstart', function (e) {
+      const x = e.originalEvent.touches[0].clientX;
+      const screenWidth = window.innerWidth;
+
+      if (x > screenWidth * 0.66) {
+        $('#flipbook').turn('next');
+      } else if (x < screenWidth * 0.33) {
+        $('#flipbook').turn('previous');
       }
     });
 
