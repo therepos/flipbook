@@ -230,11 +230,16 @@
     });
 
     // Mobile tap zone navigation
+    // Prevent Turn.js's own tap handling from firing
+    $('#flipbook').on('touchend click', function (e) {
+      e.stopImmediatePropagation();
+      e.preventDefault();
+    });
+
+    // Tap zones for left/right tap-to-navigate on mobile
     $(document).on('touchstart', function (e) {
       const x = e.originalEvent.touches[0].clientX;
       const screenWidth = window.innerWidth;
-
-      e.stopImmediatePropagation(); // ← prevents Turn.js from also flipping
 
       if (x > screenWidth * 0.66) {
         flipbook.turn('next');
