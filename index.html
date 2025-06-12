@@ -71,6 +71,20 @@
       padding: 0.3em 0.7em;
       border-radius: 4px;
     }
+
+    /* fade-effect of floating buttons */
+    #fullscreen-btn,
+    #back-btn,
+    #slide-counter {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    body.user-active #fullscreen-btn,
+    body.user-active #back-btn,
+    body.user-active #slide-counter {
+      opacity: 1;
+    }
   </style>
 </head>
 
@@ -254,6 +268,23 @@
 
     // Initialize counter once DOM is ready
     $(document).ready(updateCounter);
+
+    let fadeTimer;
+
+    function showUI() {
+      document.body.classList.add('user-active');
+      clearTimeout(fadeTimer);
+      fadeTimer = setTimeout(() => {
+        document.body.classList.remove('user-active');
+      }, 2000); // visible for 2 seconds
+    }
+
+    // Trigger on mouse move or touch
+    document.addEventListener('mousemove', showUI);
+    document.addEventListener('touchstart', showUI);
+
+    // Initial state
+    showUI();
   </script>
 
 </body>
