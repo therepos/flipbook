@@ -192,8 +192,9 @@
   <!-- Fullscreen Button -->
   <button id="fullscreen-btn">⛶</button>
 
-  <!-- Back Button -->
+  <!-- Back Button 
   <a href="https://your-main-site.com" id="back-btn">← Back to Portfolio</a>
+  -->
 
   <!-- Slide Counter -->
   <div id="slide-counter">Page <span id="current-page">1</span> / <span id="total-pages">X</span></div>
@@ -230,11 +231,6 @@
     });
 
     // Touch swipe support (mobile)
-    let startX = null;
-    $(document).on('touchstart', function (e) {
-      startX = e.originalEvent.touches[0].clientX;
-    });
-
     $(document).on('touchstart', function (e) {
       const x = e.originalEvent.touches[0].clientX;
       const screenWidth = window.innerWidth;
